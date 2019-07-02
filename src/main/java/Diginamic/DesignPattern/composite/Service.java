@@ -25,11 +25,8 @@ public class Service implements IElement {
 	 * retourne le salaire du service
 	 */
 	public Double calculerSalaire() {
-		Double tot = 0.0;
-		for (IElement elem : list) {
-			tot += elem.calculerSalaire();
-		}
-		return tot;
+
+		return list.stream().map(e -> e.calculerSalaire()).reduce((a, b) -> a + b).get();
 	}
 
 	/**
